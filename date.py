@@ -17,6 +17,9 @@ def answer(x, y, z):
 
     if len(possible_months) > 1:
         return "Ambiguous"
+    else:
+        month = s.pop()
+        print month
 
 
 
