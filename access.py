@@ -1,8 +1,3 @@
-"""
-Given list of codes consisting of chars a-z, determine number of unique codes.
-Codes can be read forward or backward, so abc == cba.
-"""
-
 def answer(x):
     """
     Given list of codes consisting of chars a-z, determine number of unique codes.
@@ -12,8 +7,13 @@ def answer(x):
     unique_codes = set()
 
     for code in x:
-        print code
+        if code in unique_codes or code[::-1] in unique_codes:
+            continue
+        else:
+            unique_codes.add(code)
 
-    return "apple"
+    return len(unique_codes)
 
-print answer(["abc", "def", "fed"])
+print answer(["foo", "bar", "oof", "bar"])
+
+print answer(["x", "y", "xy", "yy", "", "yx"])
