@@ -1,17 +1,18 @@
 def answer(intervals):
     """Given a list of intervals, return the total number of supervised hours"""
 
-    supervised_hours = set()
+    supervised_hours = []
 
     for interval in intervals:
-        # [1, 3]
         for num in range(interval[0], interval[1]):
-            supervised_hours.add(num)
+            if num not in supervised_hours:
+                supervised_hours.append(num)
 
     return len(supervised_hours)
 
 
 
+# set gives memory errors, lists give time errors.
 
 # intervals = [[1, 3], [3, 6]]
 # > 5
