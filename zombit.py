@@ -1,6 +1,7 @@
 def answer(intervals):
     """Given a list of intervals, return the total number of supervised hours"""
 
+    # add first interval as seed
     supervised_hours = intervals[0]
 
     # for interval in intervals:
@@ -14,8 +15,8 @@ def answer(intervals):
 
     for interval in intervals[1:]:
         print "interval:", interval
-    #     for hour_group in supervised_hours:
-    #         print hour_group
+        for hour_group in supervised_hours:
+            print "hours:", hour_group
     #         if (interval[0] in range(hour_group[0], hour_group[1])) and (interval[1] > hour_group[1]):
     #             print "interval in range"
     #             hour_group[1] = interval[1]
