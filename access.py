@@ -13,7 +13,3 @@ def answer(x):
             unique_codes.add(code)
 
     return len(unique_codes)
-
-print answer(["foo", "bar", "oof", "bar"])
-
-print answer(["x", "y", "xy", "yy", "", "yx"])
