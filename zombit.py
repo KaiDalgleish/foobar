@@ -1,32 +1,37 @@
 def answer(intervals):
     """Given a list of intervals, return the total number of supervised hours"""
-
-    # sort list of intervals, so first item in list is in order
-    sorted_intervals = sorted(intervals)
+    
     merged_intervals = []
+    supervised_hours = 0
 
+    # sort intervals and use first interval as current range
+    sorted_intervals = sorted(intervals)
     low, high = sorted_intervals[0]
 
-    # iterate through rest of sorted list
+    # iterate through the rest of the ranges
     for interval in sorted_intervals[1:]:
-        # if start is less than high, make it the new high
+        # if they overlap the current range, extend the current range
         if interval[0] <= high:
-            high = interval[1]
+            high = max(high, interval[1])
         else:
-        # else save old range, start new range
+            # save the current range, and start a new current range
             merged_intervals.append([low, high])
             low, high = interval
 
     merged_intervals.append([low, high])
 
-    return merged_intervals
+    # add up the ranges
+    for interval in merged_intervals:
+        supervised_hours += interval[1] - interval[0]
+
+    return supervised_hours
 
 
 # set gives memory errors, lists give time errors.
 
-# intervals = [[1, 3], [3, 6]]
-# > 5
-print answer([[1, 3], [2, 7], [3, 6], [10, 12]])
+# intervals = [[1, 3], [3, 6], [10, 12], [10, 11]]
+# > 7
+print answer([[1, 3], [2, 7], [3, 6], [10, 15], [11, 12]])
 
 # intervals = [[10, 14], [4, 18], [19, 20], [19, 20], [13, 20]]
 # > 16
