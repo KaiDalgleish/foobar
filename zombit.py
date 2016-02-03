@@ -6,8 +6,6 @@ def answer(intervals):
     merged_intervals = []
 
     low, high = sorted_intervals[0]
-    # print "low:", low
-    # print "high:", high
 
     # iterate through rest of sorted list
     for interval in sorted_intervals[1:]:
@@ -28,7 +26,7 @@ def answer(intervals):
 
 # intervals = [[1, 3], [3, 6]]
 # > 5
-# answer([[1, 3], [2, 7], [3, 6]])
+print answer([[1, 3], [2, 7], [3, 6], [10, 12]])
 
 # intervals = [[10, 14], [4, 18], [19, 20], [19, 20], [13, 20]]
 # > 16
