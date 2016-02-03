@@ -26,14 +26,6 @@ def answer(intervals):
 
     return supervised_hours
 
+# print answer([[1, 3], [2, 7], [3, 6], [10, 15], [11, 12]])
 
-# set gives memory errors, lists give time errors.
-
-# intervals = [[1, 3], [3, 6], [10, 12], [10, 11]]
-# > 7
-print answer([[1, 3], [2, 7], [3, 6], [10, 15], [11, 12]])
-
-# intervals = [[10, 14], [4, 18], [19, 20], [19, 20], [13, 20]]
-# > 16
-# [[4, 20]]
-print answer([[10, 14], [4, 18], [19, 20], [19, 20], [13, 20]])
+# print answer([[10, 14], [4, 18], [19, 20], [19, 20], [13, 20]])
