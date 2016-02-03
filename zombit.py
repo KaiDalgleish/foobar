@@ -1,36 +1,27 @@
 def answer(intervals):
     """Given a list of intervals, return the total number of supervised hours"""
 
-    # add first interval as seed
-    supervised_hours = [intervals[0]]
+    # sort list of intervals, so first item in list is in order
+    sorted_intervals = sorted(intervals)
+    merged_intervals = []
 
-    # for interval in intervals:
-    #     for num in range(interval[0], interval[1]):
-    #         if num not in supervised_hours:
-    #             supervised_hours.append(num)
+    low, high = sorted_intervals[0]
+    # print "low:", low
+    # print "high:", high
 
-    # return len(supervised_hours)
+    # iterate through rest of sorted list
+    for interval in sorted_intervals[1:]:
+        # if start is less than high, make it the new high
+        if interval[0] <= high:
+            high = interval[1]
+        else:
+        # else save old range, start new range
+            merged_intervals.append([low, high])
+            low, high = interval
 
+    merged_intervals.append([low, high])
 
-
-    for interval in intervals:
-        print "interval:", interval
-        for hour_group in supervised_hours:
-            print "hours:", hour_group
-            if interval[0] in range(hour_group[0], hour_group[1]):
-                if interval[1] > hour_group[1]:
-                    print "interval in range"
-                    hour_group[1] = interval[1]
-                    print "suped:", supervised_hours
-            elif interval[1] in range(hour_group[0], hour_group[1]):
-                if interval[0] < hour_group[0]:
-                    hour_group[0] = interval[0]
-                    print "suped:", supervised_hours
-            else:
-                print "adding interval"
-                supervised_hours.append(interval)
-
-    print "final suped:", supervised_hours
+    return merged_intervals
 
 
 # set gives memory errors, lists give time errors.
@@ -41,5 +32,5 @@ def answer(intervals):
 
 # intervals = [[10, 14], [4, 18], [19, 20], [19, 20], [13, 20]]
 # > 16
-# [[4, 18], [13, 20]]
-answer([[10, 14], [4, 18], [19, 20], [19, 20], [13, 20]])
+# [[4, 20]]
+print answer([[10, 14], [4, 18], [19, 20], [19, 20], [13, 20]])
